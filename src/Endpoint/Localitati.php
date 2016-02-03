@@ -10,20 +10,20 @@ use FanCurier\Plugin\Curl;
  *
  * @author csaba.balint@reea.net
  */
-class Servicii implements endpointInterface {
+class Localitati implements endpointInterface {
 
-  protected $url = 'https://www.selfawb.ro/export_servicii_integrat.php';
+  protected $url = 'https://www.selfawb.ro/export_distante_integrat.php';
   protected $user;
 
   public static function setUp($user) {
-    return new Servicii($user);
+    return new Localitati($user);
   }
 
   public function __construct($user) {
     $this->user = $user;
   }
 
-  public function getServicii() {
+  public function getLocalitati($judet = NULL, $language = NULL) {
 
     $post = array(
       'username' => $this->user->name,
@@ -31,9 +31,16 @@ class Servicii implements endpointInterface {
       'user_pass' => $this->user->pass,
     );
 
+    if ($judet) {
+      $post['judet'] = $judet;
+    }
+    if ($language) {
+      $post['language'] = $language;
+    }
+
     $curl = new Curl($this->url);
-    $rp =  $curl->curlRequest($post);
-    
+    $rp = $curl->curlRequest($post);
+
     if ($rp['info']['http_code'] == 200) {
       $response = str_getcsv($rp['response'], "\n");
       unset($response[0]);

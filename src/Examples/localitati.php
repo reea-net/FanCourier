@@ -16,9 +16,16 @@ try {
   $user->id = '7032158';
 
   $fc = new fanCurier();
-  $endpoint = $fc->getEndpoint('Servicii', [$user]);
-  $value = $endpoint->getServicii();
-  print_r($value);
+  $endpoint = $fc->getEndpoint('Localitati', [$user]);
+
+  //Get all
+  /* $result = $endpoint->getLocalitati(); */
+  //By county
+  $result = $endpoint->getLocalitati('Mures');
+
+  foreach ($result as $key => $value) {
+    print_r(str_getcsv($value));
+  }
 }
 catch (Exception $exc) {
   echo $exc->getMessage();
