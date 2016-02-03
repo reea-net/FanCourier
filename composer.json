@@ -1,0 +1,18 @@
+{
+  "name": "curier/fancourier",
+  "type": "library",
+  "license": "GPL",
+  "description": "API for FanCurier express courier services.",
+  "authors": [
+    {
+      "name": "Csaba Balint",
+      "email": "balintcsaba89@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "FanCurier\\": "src/"
+    }
+  }
+}
