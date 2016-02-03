@@ -1,5 +1,6 @@
 {
-  "name": "FanCurierAPI",
+  "name": "fancourier/fancourier",
+  "type": "library",
   "description": "API for FanCurier express courier services.",
   "authors": [
     {
