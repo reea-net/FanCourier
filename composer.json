@@ -1,5 +1,5 @@
 {
-  "name": "fancourier/fancourier",
+  "name": "curier/fancourier",
   "type": "library",
   "license": "GPL",
   "description": "API for FanCurier express courier services.",

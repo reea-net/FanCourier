@@ -1,2 +1,2 @@
-# FanCurier
-FanCurier API
+# FanCourier
+FanCourier API
