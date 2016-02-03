@@ -1,0 +1,16 @@
+{
+  "name": "FanCurierAPI",
+  "description": "API for FanCurier express courier services.",
+  "authors": [
+    {
+      "name": "Csaba Balint",
+      "email": "balintcsaba89@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "FanCurier\\": "src/"
+    }
+  }
+}
