@@ -15,7 +15,7 @@ namespace FanCurier\Plugin\csv;
  */
 trait csvMapping {
 
-  public function getMapping() {
+  public function getHeader() {
     return [
       0 => "Tip serviciu",
       1 => 'Banca',
@@ -52,6 +52,46 @@ trait csvMapping {
       32 => 'Optiuni',
       33 => 'Packing',
       34 => 'Date personale',
+    ];
+  }
+
+  public function getMachinNames() {
+    return [
+      'tip' => 0,
+      'banca' => 1,
+      'iban' => 2,
+      'nr_plic' => 3,
+      'nr_colet' => 4,
+      'greutate' => 5,
+      'plata_expeditii' => 6,
+      'ramburs' => 7,
+      'plata_ramburs_la' => 8,
+      'valoare' => 9,
+      'persoana_contact_expeditor' => 10,
+      'observatii' => 11,
+      'continut' => 12,
+      'nume_destinatar' => 13,
+      'persoana_contact' => 14,
+      'telefon' => 15,
+      'fax' => 16,
+      'email' => 17,
+      'judet' => 18,
+      'localitate' => 19,
+      'strada' => 20,
+      'nr' => 21,
+      'zip' => 22,
+      'bloc' => 23,
+      'scara' => 24,
+      'etaj' => 25,
+      'apartament' => 26,
+      'inaltime_pachet' => 27,
+      'latime_pachet' => 28,
+      'lungime_pachet' => 29,
+      'restituire' => 30,
+      'centru_cost' => 31,
+      'optiuni' => 32,
+      'packing' => 33,
+      'date_personale' => 34,
     ];
   }
 

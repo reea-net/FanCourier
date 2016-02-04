@@ -4,26 +4,37 @@
  * @file
  * Exemple of generating new AWB.
  */
-
 include_once __DIR__ . '/../../vendor/autoload.php';
 
 use FanCurier\fanCurier;
 use FanCurier\Plugin\csv\csvItem;
 
 try {
-  $fc = new fanCurier();
-  $endpoint = $fc->getEndpoint('awbGenerator');
 
-  $endpoint->createFile();  
+  $user = new stdClass();
+  $user->name = 'clienttest';
+  $user->pass = 'testare';
+  $user->id = '7032158';
+
+  $fc = new fanCurier();
+  $endpoint = $fc->getEndpoint('awbGenerator', [$user]);
+
+  $endpoint->createFile();
   $item = csvItem::newItem();
-  $item->setAddress(['localitate' => 'Reghin', 'judet' => 'Mures', 'strada' => 'csaba']);
-  $item->setItem(0, 'standard');
-  print_r($item->getItem());  
+  $item->setItem('tip', 'standard');
+  $item->setItems(['localitate' => 'Targu Mures', 'judet' => 'Mures', 'strada' => 'Aleea Carpati', 'nr' => '1']);
+  $item->setItems(['telefon' => '0758099432',]);
+  $item->setItems(['nume_destinatar' => 'Dr Dre', 'plata_expeditii' => 'destinatar']);
+  $item->setItems(['greutate' => '1', 'nr_colet' => 1]);
+
   $endpoint->addNewItem($item);
+
+  //print_r($endpoint->csvToText());
+
+  $r = $endpoint->getAwb();
+  print_r($r);
   
-  print_r($endpoint->csvToText());
-  
-  $endpoint->getAwb();
+  //2035600120027
 }
 catch (Exception $exc) {
   echo $exc->getMessage();

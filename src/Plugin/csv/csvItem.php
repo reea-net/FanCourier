@@ -13,34 +13,35 @@ namespace FanCurier\Plugin\csv;
  */
 class csvItem {
 
+  use csvMapping;
+
   private $item;
 
-  public function __construct($length = 34) {
-    $this->item = range(0, $length);
+  public function __construct() {
+    $this->item = array_fill(0, count($this->getMachinNames()) - 1, '');
   }
 
-  public static function newItem($length = 34) {
-    return new csvItem($length);
-  }
-
-  public function setAddress(array $address) {
-    isset($address['judet']) ? $this->item[18] = $address['judet'] : NULL;
-    isset($address['localitate']) ? $this->item[19] = $address['localitate'] : NULL;
-    isset($address['strada']) ? $this->item[20] = $address['strada'] : NULL;
+  public static function newItem() {
+    return new csvItem();
   }
 
   public function setItem($key, $value) {
-    $this->item[$key] = $value;
+    $this->setItems([$key => $value]);
+  }
+
+  public function setItems(array $items) {
+    static $map;
+
+    if (!$map) {
+      $map = $this->getMachinNames();
+    }
+    foreach ($items as $key => $value) {
+      echo $map[$key] . ' - ' . $value . "\r\n";
+      $this->item[$map[$key]] = $value;
+    }
   }
 
   public function getItem() {
-    
-    foreach ($this->item as $key => $value) {
-      if(is_numeric($value)) {
-        $this->item[$key] = '';
-      }
-    }
-    
     return $this->item;
   }
 
