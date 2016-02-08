@@ -36,7 +36,6 @@ class csvItem {
       $map = $this->getMachinNames();
     }
     foreach ($items as $key => $value) {
-      echo $map[$key] . ' - ' . $value . "\r\n";
       $this->item[$map[$key]] = $value;
     }
   }
