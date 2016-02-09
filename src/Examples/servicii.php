@@ -2,8 +2,9 @@
 
 /**
  * @file
- * Exemple of generating new AWB.
+ * Exemple of getting the services.
  */
+
 include_once __DIR__ . '/../../vendor/autoload.php';
 
 use FanCurier\fanCurier;

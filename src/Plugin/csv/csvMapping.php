@@ -1,20 +1,25 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file
+ * Contains \FanCurier\Plugin\csv\csvMapping.
  */
 
 namespace FanCurier\Plugin\csv;
 
 /**
- * Description of csvMaping
+ * FanCourier CSV mapping trait.
  *
  * @author csaba.balint@reea.net
  */
 trait csvMapping {
 
+  /**
+   * Return CSV file header.
+   *
+   * @return array
+   *   Header of CSV.
+   */
   public function getHeader() {
     return [
       0 => "Tip serviciu",
@@ -55,6 +60,12 @@ trait csvMapping {
     ];
   }
 
+  /**
+   * Return columns machine names.
+   *
+   * @return array
+   *   Machine names of the CSV file columns.
+   */
   public function getMachinNames() {
     return [
       'tip' => 0,

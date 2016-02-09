@@ -1,18 +1,19 @@
 <?php
 
+/**
+ * @file
+ * Contains \FanCurier\fanCurier.
+ */
+
 namespace FanCurier;
 
 use FanCurier\Endpoint\endpointManager;
 
 /**
- * Description of fanCurier
+ * The main fanCurier class.
  *
  * @author csaba.balint@reea.net
  */
-class fanCurier extends endpointManager{
-
-  public function __construct() {
-    
-  }
-
+class fanCurier extends endpointManager {
+  
 }

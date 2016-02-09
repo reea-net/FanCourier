@@ -1,28 +1,71 @@
 <?php
 
+/**
+ * @file
+ * Contains \FanCurier\Endpoint\Localitati.
+ */
+
 namespace FanCurier\Endpoint;
 
 use FanCurier\Endpoint\endpointInterface;
 use FanCurier\Plugin\Curl;
 
 /**
- * Description of fanCurier
+ * Controller for FanCurier distance info.
  *
  * @author csaba.balint@reea.net
  */
 class Localitati implements endpointInterface {
 
+  /**
+   * Endpoint url.
+   *
+   * @var string 
+   */
   protected $url = 'https://www.selfawb.ro/export_distante_integrat.php';
+
+  /**
+   * FanCurier user.
+   *
+   * @var object 
+   */
   protected $user;
 
+  /**
+   * New controller class.
+   * 
+   * @param type $user
+   *   Login in credentials.
+   *
+   * @return \FanCurier\Endpoint\Localitati
+   */
   public static function setUp($user) {
     return new Localitati($user);
   }
 
+  /**
+   * Constructor.
+   *
+   * @param object $user
+   *   Login in credentials.
+   */
   public function __construct($user) {
     $this->user = $user;
   }
 
+  /**
+   * Get distance info.
+   *
+   * @param string $judet
+   *   Romanian county (Optional).
+   * @param string $language
+   *   Language of response ro|en (Optional).
+   *
+   * @return array
+   *
+   * @throws Exception
+   *   Error exeption recived from API.
+   */
   public function getLocalitati($judet = NULL, $language = NULL) {
 
     $post = array(
@@ -31,12 +74,8 @@ class Localitati implements endpointInterface {
       'user_pass' => $this->user->pass,
     );
 
-    if ($judet) {
-      $post['judet'] = $judet;
-    }
-    if ($language) {
-      $post['language'] = $language;
-    }
+    if ($judet) {$post['judet'] = $judet;}
+    if ($language) { $post['language'] = $language;}
 
     $curl = new Curl($this->url);
     $rp = $curl->curlRequest($post);

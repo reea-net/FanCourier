@@ -1,29 +1,78 @@
 <?php
 
+/**
+ * @file
+ * Contains \FanCurier\Endpoint\printAwb.
+ */
+
 namespace FanCurier\Endpoint;
 
 use FanCurier\Endpoint\endpointInterface;
 use FanCurier\Plugin\Curl;
 
 /**
- * Description of fanCurier
+ * Controller for FanCurier print AWB.
  *
  * @author csaba.balint@reea.net
  */
 class printAwb implements endpointInterface {
 
+  /**
+   * Endpoint url for HTML response.
+   *
+   * @var string 
+   */
   protected $url_html = 'https://www.selfawb.ro/view_awb_integrat.php';
+
+  /**
+   * Endpoint url for PDF response.
+   *
+   * @var string 
+   */
   protected $url_pdf = 'https://www.selfawb.ro/view_awb_integrat_pdf.php';
+
+  /**
+   * FanCurier user.
+   *
+   * @var object 
+   */
   protected $user;
 
+  /**
+   * New controller class.
+   *
+   * @param type $user
+   *   Login in credentials.
+   *
+   * @return \FanCurier\Endpoint\printAwb
+   */
   public static function setUp($user) {
     return new printAwb($user);
   }
 
+  /**
+   * Constructor.
+   *
+   * @param object $user
+   *   Login in credentials.
+   */
   public function __construct($user) {
     $this->user = $user;
   }
 
+  /**
+   * Get AWB in HTML format.
+   *
+   * @param int $awb
+   *   AWB number.
+   * @param int $type
+   *   Type of AWB.
+   *
+   * @return array
+   *
+   * @throws Exception
+   *   Error exeption recived from API.
+   */
   public function getHtml($awb, $type = NULL) {
 
     $post = array(
@@ -51,14 +100,19 @@ class printAwb implements endpointInterface {
   /**
    * Get AWB in PDF format.
    *
-   * @param type $awb
+   * @param int $awb
    *   AWB number.
-   * @param type $page
+   * @param string $page
    *   Pdf page type: A4,A5,A6
-   * @param type $type
+   * @param int $type
    *   0 or 1. For $page A6 $type = 1
-   * @param type $label
+   * @param int $label
    *   Number.
+   *
+   * @return array
+   *
+   * @throws Exception
+   *   Error exeption recived from API.
    */
   public function getPdf($awb, $page = NULL, $type = NULL, $label = NULL) {
 

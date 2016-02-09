@@ -1,28 +1,65 @@
 <?php
 
+/**
+ * @file
+ * Contains \FanCurier\Endpoint\Servicii.
+ */
+
 namespace FanCurier\Endpoint;
 
 use FanCurier\Endpoint\endpointInterface;
 use FanCurier\Plugin\Curl;
 
 /**
- * Description of fanCurier
+ * Controller for FanCurier services.
  *
  * @author csaba.balint@reea.net
  */
 class Servicii implements endpointInterface {
 
+  /**
+   * Endpoint url.
+   *
+   * @var string 
+   */
   protected $url = 'https://www.selfawb.ro/export_servicii_integrat.php';
+
+  /**
+   * FanCurier user.
+   *
+   * @var object 
+   */
   protected $user;
 
+  /**
+   * New controller class.
+   * 
+   * @param type $user
+   *   Login in credentials.
+   *
+   * @return \FanCurier\Endpoint\Servicii
+   */
   public static function setUp($user) {
     return new Servicii($user);
   }
 
+  /**
+   * Constructor.
+   *
+   * @param object $user
+   *   Login in credentials.
+   */
   public function __construct($user) {
     $this->user = $user;
   }
 
+  /**
+   * List of the FanCourier services.
+   *
+   * @return array
+   * @throws Exception
+   *   Error exeption recived from API.
+   */
   public function getServicii() {
 
     $post = array(
@@ -32,8 +69,8 @@ class Servicii implements endpointInterface {
     );
 
     $curl = new Curl($this->url);
-    $rp =  $curl->curlRequest($post);
-    
+    $rp = $curl->curlRequest($post);
+
     if ($rp['info']['http_code'] == 200) {
       $response = str_getcsv($rp['response'], "\n");
       unset($response[0]);

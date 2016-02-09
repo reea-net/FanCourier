@@ -1,28 +1,73 @@
 <?php
 
+/**
+ * @file
+ * Contains \FanCurier\Endpoint\Strazi.
+ */
+
 namespace FanCurier\Endpoint;
 
 use FanCurier\Endpoint\endpointInterface;
 use FanCurier\Plugin\Curl;
 
 /**
- * Description of fanCurier
+ * Controller for FanCurier streets.
  *
  * @author csaba.balint@reea.net
  */
 class Strazi implements endpointInterface {
 
+  /**
+   * Endpoint url.
+   *
+   * @var string 
+   */
   protected $url = 'https://www.selfawb.ro/export_strazi_integrat.php';
+
+  /**
+   * FanCurier user.
+   *
+   * @var object 
+   */
   protected $user;
 
+  /**
+   * New controller class.
+   *
+   * @param type $user
+   *   Login in credentials.
+   *
+   * @return \FanCurier\Endpoint\Strazi
+   */
   public static function setUp($user) {
     return new Strazi($user);
   }
 
+  /**
+   * Constructor.
+   *
+   * @param object $user
+   *   Login in credentials.
+   */
   public function __construct($user) {
     $this->user = $user;
   }
 
+  /**
+   * Get streets.
+   *
+   * @param type $judet
+   *   Romanian county (Optional).
+   * @param type $localitate
+   *   Romanian City (Optional).
+   * @param type $language
+   *   Language of response ro|en (Optional).
+   *
+   * @return array
+   *
+   * @throws Exception
+   *   Error exeption recived from API.
+   */
   public function getStrazi($judet = NULL, $localitate = NULL, $language = NULL) {
 
     $post = array(
