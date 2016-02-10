@@ -6,8 +6,8 @@
  */
 include_once __DIR__ . '/../../vendor/autoload.php';
 
-use FanCurier\fanCurier;
-use FanCurier\Plugin\csv\csvItem;
+use FanCourier\fanCourier;
+use FanCourier\Plugin\csv\csvItem;
 
 try {
 
@@ -16,7 +16,7 @@ try {
   $user->pass = 'testare';
   $user->id = '7032158';
 
-  $fc = new fanCurier();
+  $fc = new fanCourier();
   $endpoint = $fc->getEndpoint('awbGenerator', [$user]);
   $endpoint->createFile();
 
@@ -24,7 +24,7 @@ try {
   $item->setItem('tip', 'standard');
   $item->setItems(['localitate' => 'Targu Mures', 'judet' => 'Mures', 'strada' => 'Aleea Carpati', 'nr' => '1']);
   $item->setItems(['telefon' => '0758099432',]);
-  $item->setItems(['nume_destinatar' => 'Dr Dre1', 'plata_expeditii' => 'destinatar']);
+  $item->setItems(['nume_destinatar' => 'Name 1', 'plata_expeditii' => 'destinatar']);
   $item->setItems(['greutate' => '1', 'nr_colet' => 1]);
   $endpoint->addNewItem($item);
 
@@ -32,7 +32,7 @@ try {
   $item->setItem('tip', 'standard');
   $item->setItems(['localitate' => 'Targu Mures', 'judet' => 'Mures', 'strada' => 'Aleea Carpati', 'nr' => '1']);
   $item->setItems(['telefon' => '0758099432',]);
-  $item->setItems(['nume_destinatar' => 'Dr Dre2', 'plata_expeditii' => 'destinatar']);
+  $item->setItems(['nume_destinatar' => 'Name 2', 'plata_expeditii' => 'destinatar']);
   $item->setItems(['greutate' => '1', 'nr_colet' => 1]);
   $endpoint->addNewItem($item);
 

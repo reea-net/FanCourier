@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \FanCurier\Plugin\csv\csvItem.
+ * Contains \FanCourier\Plugin\csv\csvItem.
  */
 
-namespace FanCurier\Plugin\csv;
+namespace FanCourier\Plugin\csv;
 
 /**
  * Class to create new csv line.
@@ -33,7 +33,7 @@ class csvItem {
   /**
    * New item.
    *
-   * @return \FanCurier\Plugin\csv\csvItem
+   * @return \FanCourier\Plugin\csv\csvItem
    */
   public static function newItem() {
     return new csvItem();
@@ -44,7 +44,7 @@ class csvItem {
    *
    * @param type $key
    *   CSV column id.
-   *   @see \FanCurier\Plugin\csv\csvMapping::getMachinNames()
+   *   @see \FanCourier\Plugin\csv\csvMapping::getMachinNames()
    * @param type $value
    *   Value of the 
    */

@@ -2,17 +2,17 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\awbErrors.
+ * Contains \FanCourier\Endpoint\awbErrors.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\csv\csvGenerator;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\csv\csvGenerator;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier AWB errors.
+ * Controller for FanCourier AWB errors.
  *
  * @author csaba.balint@reea.net
  */
@@ -26,7 +26,7 @@ class awbErrors extends csvGenerator implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/export_lista_erori_imp_awb_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -38,7 +38,7 @@ class awbErrors extends csvGenerator implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\awbErrors
+   * @return \FanCourier\Endpoint\awbErrors
    */
   public static function setUp($user) {
     return new awbErrors($user);

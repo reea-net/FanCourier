@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\endpointManagerInterface.
+ * Contains \FanCourier\Endpoint\endpointManagerInterface.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
 /**
  * Interface for endpointManager abstract class.

@@ -2,12 +2,12 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\endpointManager.
+ * Contains \FanCourier\Endpoint\endpointManager.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointManagerInterface;
+use FanCourier\Endpoint\endpointManagerInterface;
 use Exception;
 
 /**
@@ -32,8 +32,8 @@ abstract class endpointManager implements endpointManagerInterface {
    *   No endpoint exeption.
    */
   public function getEndpoint($endpoint, array $params = []) {
-    if (class_exists("FanCurier\\Endpoint\\" . $endpoint)) {
-      return call_user_func_array('FanCurier\\Endpoint\\' . $endpoint . '::setUp', $params);
+    if (class_exists("FanCourier\\Endpoint\\" . $endpoint)) {
+      return call_user_func_array('FanCourier\\Endpoint\\' . $endpoint . '::setUp', $params);
     }
     else {
       throw new Exception('The requested endpoint does not exist.');

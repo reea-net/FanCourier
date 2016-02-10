@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\Strazi.
+ * Contains \FanCourier\Endpoint\Strazi.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier streets.
+ * Controller for FanCourier streets.
  *
  * @author csaba.balint@reea.net
  */
@@ -25,7 +25,7 @@ class Strazi implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/export_strazi_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -37,7 +37,7 @@ class Strazi implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\Strazi
+   * @return \FanCourier\Endpoint\Strazi
    */
   public static function setUp($user) {
     return new Strazi($user);

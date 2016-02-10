@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\awbUrmarire.
+ * Contains \FanCourier\Endpoint\awbUrmarire.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier new AWB tracking.
+ * Controller for FanCourier new AWB tracking.
  *
  * @author csaba.balint@reea.net
  */
@@ -25,7 +25,7 @@ class awbUrmarire implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/awb_tracking_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -37,7 +37,7 @@ class awbUrmarire implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\awbUrmarire
+   * @return \FanCourier\Endpoint\awbUrmarire
    */
   public static function setUp($user) {
     return new awbUrmarire($user);

@@ -7,7 +7,7 @@
 
 include_once __DIR__ . '/../../vendor/autoload.php';
 
-use FanCurier\fanCurier;
+use FanCourier\fanCourier;
 
 try {
 
@@ -16,7 +16,7 @@ try {
   $user->pass = 'testare';
   $user->id = '7032158';
 
-  $fc = new fanCurier();
+  $fc = new fanCourier();
   $endpoint = $fc->getEndpoint('scanAwb', [$user]);
 
   $result = $endpoint->scan(2039600120012);

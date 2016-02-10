@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \FanCurier\Plugin\Curl.
+ * Contains \FanCourier\Plugin\Curl.
  */
 
-namespace FanCurier\Plugin;
+namespace FanCourier\Plugin;
 
 /**
  * Curl request handler class.

@@ -7,7 +7,7 @@
 
 include_once __DIR__ . '/../../vendor/autoload.php';
 
-use FanCurier\fanCurier;
+use FanCourier\fanCourier;
 
 try {
 
@@ -16,7 +16,7 @@ try {
   $user->pass = 'testare';
   $user->id = '7032158';
 
-  $fc = new fanCurier();
+  $fc = new fanCourier();
   $endpoint = $fc->getEndpoint('awbUrmarire', [$user]);
 
   $result = $endpoint->getStatus('2028600120012', 1);

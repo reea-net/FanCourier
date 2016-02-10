@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \FanCurier\Plugin\csv\csvMapping.
+ * Contains \FanCourier\Plugin\csv\csvMapping.
  */
 
-namespace FanCurier\Plugin\csv;
+namespace FanCourier\Plugin\csv;
 
 /**
  * FanCourier CSV mapping trait.

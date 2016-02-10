@@ -2,12 +2,12 @@
 
 /**
  * @file
- * Contains \FanCurier\Plugin\csv\csvGenerator.
+ * Contains \FanCourier\Plugin\csv\csvGenerator.
  */
 
-namespace FanCurier\Plugin\csv;
+namespace FanCourier\Plugin\csv;
 
-use FanCurier\Plugin\csv\csvItem;
+use FanCourier\Plugin\csv\csvItem;
 use CURLFile;
 
 /**
@@ -47,7 +47,7 @@ abstract class csvGenerator {
    * Creating a temporary csv file in memory.
    */
   public function createFile() {
-    $this->tmpfname = tempnam("/tmp", "FanCurier");
+    $this->tmpfname = tempnam("/tmp", "FanCourier");
     $this->csv = fopen($this->tmpfname, 'a');
     fputcsv($this->csv, $this->getHeader(), ',', chr(0));
   }
@@ -57,7 +57,7 @@ abstract class csvGenerator {
    *
    * @param csvItem $item
    *   New line of CSV file.
-   *   @see \FanCurier\Plugin\csv\csvItem
+   *   @see \FanCourier\Plugin\csv\csvItem
    */
   public function addNewItem(csvItem $item) {
     fputcsv($this->csv, $item->getItem(), ',', chr(0));

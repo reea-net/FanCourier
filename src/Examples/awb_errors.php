@@ -6,7 +6,7 @@
  */
 include_once __DIR__ . '/../../vendor/autoload.php';
 
-use FanCurier\fanCurier;
+use FanCourier\fanCourier;
 
 try {
 
@@ -15,7 +15,7 @@ try {
   $user->pass = 'testare';
   $user->id = '7032158';
 
-  $fc = new fanCurier();
+  $fc = new fanCourier();
   $endpoint = $fc->getEndpoint('awbErrors', [$user]);
 
   $result = $endpoint->getErrors();

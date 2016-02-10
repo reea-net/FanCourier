@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\deleteAwb.
+ * Contains \FanCourier\Endpoint\deleteAwb.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier delete AWB.
+ * Controller for FanCourier delete AWB.
  *
  * @author csaba.balint@reea.net
  */
@@ -25,7 +25,7 @@ class deleteAwb implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/delete_awb_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -37,7 +37,7 @@ class deleteAwb implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\deleteAwb
+   * @return \FanCourier\Endpoint\deleteAwb
    */
   public static function setUp($user) {
     return new deleteAwb($user);

@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\Observatii.
+ * Contains \FanCourier\Endpoint\Observatii.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier notifications.
+ * Controller for FanCourier notifications.
  *
  * @author csaba.balint@reea.net
  */
@@ -25,7 +25,7 @@ class Observatii implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/export_observatii_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -37,7 +37,7 @@ class Observatii implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\Observatii
+   * @return \FanCourier\Endpoint\Observatii
    */
   public static function setUp($user) {
     return new Observatii($user);

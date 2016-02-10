@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\Localitati.
+ * Contains \FanCourier\Endpoint\Localitati.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier distance info.
+ * Controller for FanCourier distance info.
  *
  * @author csaba.balint@reea.net
  */
@@ -25,7 +25,7 @@ class Localitati implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/export_distante_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -37,7 +37,7 @@ class Localitati implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\Localitati
+   * @return \FanCourier\Endpoint\Localitati
    */
   public static function setUp($user) {
     return new Localitati($user);

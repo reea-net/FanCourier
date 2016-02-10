@@ -2,17 +2,17 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\awbGenerator.
+ * Contains \FanCourier\Endpoint\awbGenerator.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\csv\csvGenerator;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\csv\csvGenerator;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier new AWB number/s.
+ * Controller for FanCourier new AWB number/s.
  *
  * @author csaba.balint@reea.net
  */
@@ -26,7 +26,7 @@ class awbGenerator extends csvGenerator implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/import_awb_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -38,7 +38,7 @@ class awbGenerator extends csvGenerator implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\awbGenerator
+   * @return \FanCourier\Endpoint\awbGenerator
    */
   public static function setUp($user) {
     return new awbGenerator($user);

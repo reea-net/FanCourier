@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\scanAwb.
+ * Contains \FanCourier\Endpoint\scanAwb.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier scan AWB.
+ * Controller for FanCourier scan AWB.
  *
  * @author csaba.balint@reea.net
  */
@@ -25,7 +25,7 @@ class scanAwb implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/download_awb_scan_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -37,7 +37,7 @@ class scanAwb implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\scanAwb
+   * @return \FanCourier\Endpoint\scanAwb
    */
   public static function setUp($user) {
     return new scanAwb($user);

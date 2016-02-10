@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\printAwb.
+ * Contains \FanCourier\Endpoint\printAwb.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier print AWB.
+ * Controller for FanCourier print AWB.
  *
  * @author csaba.balint@reea.net
  */
@@ -32,7 +32,7 @@ class printAwb implements endpointInterface {
   protected $url_pdf = 'https://www.selfawb.ro/view_awb_integrat_pdf.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -44,7 +44,7 @@ class printAwb implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\printAwb
+   * @return \FanCourier\Endpoint\printAwb
    */
   public static function setUp($user) {
     return new printAwb($user);

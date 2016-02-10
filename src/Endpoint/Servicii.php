@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\Servicii.
+ * Contains \FanCourier\Endpoint\Servicii.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
-use FanCurier\Endpoint\endpointInterface;
-use FanCurier\Plugin\Curl;
+use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCurier services.
+ * Controller for FanCourier services.
  *
  * @author csaba.balint@reea.net
  */
@@ -25,7 +25,7 @@ class Servicii implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/export_servicii_integrat.php';
 
   /**
-   * FanCurier user.
+   * FanCourier user.
    *
    * @var object 
    */
@@ -37,7 +37,7 @@ class Servicii implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\Servicii
+   * @return \FanCourier\Endpoint\Servicii
    */
   public static function setUp($user) {
     return new Servicii($user);
