@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \FanCurier\Endpoint\awbGenerator.
+ * Contains \FanCurier\Endpoint\awbErrors.
  */
 
 namespace FanCurier\Endpoint;
@@ -12,18 +12,18 @@ use FanCurier\Plugin\csv\csvGenerator;
 use FanCurier\Plugin\Curl;
 
 /**
- * Controller for FanCurier new AWB number/s.
+ * Controller for FanCurier AWB errors.
  *
  * @author csaba.balint@reea.net
  */
-class awbGenerator extends csvGenerator implements endpointInterface {
+class awbErrors extends csvGenerator implements endpointInterface {
 
   /**
    * Endpoint url.
    *
    * @var string 
    */
-  protected $url = 'https://www.selfawb.ro/import_awb_integrat.php';
+  protected $url = 'https://www.selfawb.ro/export_lista_erori_imp_awb_integrat.php';
 
   /**
    * FanCurier user.
@@ -38,10 +38,10 @@ class awbGenerator extends csvGenerator implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCurier\Endpoint\awbGenerator
+   * @return \FanCurier\Endpoint\awbErrors
    */
   public static function setUp($user) {
-    return new awbGenerator($user);
+    return new awbErrors($user);
   }
 
   /**
@@ -55,22 +55,19 @@ class awbGenerator extends csvGenerator implements endpointInterface {
   }
 
   /**
-   * Generate new awb numbers.
+   * Get awb errors.
    *
-   * @param file $file
-   *   CSV file.
    * @return array
    *
    * @throws Exception
    *   Error exeption recived from API.
    */
-  public function getAwb($file) {
+  public function getErrors() {
 
     $post = array(
       'username' => $this->user->name,
       'client_id' => $this->user->id,
       'user_pass' => $this->user->pass,
-      'fisier' => isset($file) ? $file : $this->getFile(),
     );
 
     $curl = new Curl($this->url);
@@ -78,6 +75,7 @@ class awbGenerator extends csvGenerator implements endpointInterface {
 
     if ($rp['info']['http_code'] == 200) {
       $response = str_getcsv($rp['response'], "\n");
+      unset($response[0]);
       return $response;
     }
     else {
