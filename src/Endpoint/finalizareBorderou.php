@@ -2,27 +2,28 @@
 
 /**
  * @file
- * Contains \FanCourier\Endpoint\exportBorderou.
+ * Contains \FanCourier\Endpoint\finalizareBorderou.
  */
 
 namespace FanCourier\Endpoint;
 
 use FanCourier\Endpoint\endpointInterface;
+use FanCourier\Plugin\csv\csvGenerator;
 use FanCourier\Plugin\Curl;
 
 /**
- * Controller for FanCourier docket export.
+ * Controller for FanCourier docket finalization.
  *
  * @author csaba.balint@reea.net
  */
-class exportBorderou implements endpointInterface {
+class finalizareBorderou extends csvGenerator implements endpointInterface {
 
   /**
    * Endpoint url.
    *
    * @var string 
    */
-  protected $url = 'https://www.selfawb.ro/export_borderou_integrat.php';
+  protected $url = 'https://www.selfawb.ro/finalizare_borderou_integrat.php';
 
   /**
    * FanCourier user.
@@ -37,10 +38,10 @@ class exportBorderou implements endpointInterface {
    * @param type $user
    *   Login in credentials.
    *
-   * @return \FanCourier\Endpoint\exportBorderou
+   * @return \FanCourier\Endpoint\finalizareBorderou
    */
   public static function setUp($user) {
-    return new exportBorderou($user);
+    return new finalizareBorderou($user);
   }
 
   /**
@@ -54,23 +55,14 @@ class exportBorderou implements endpointInterface {
   }
 
   /**
-   * Get borderou by date.
-   *
-   * @param string $date
-   *   Date for borderou.
-   * @param string $mode
-   *   Filter the returned value by: (Optional).
-   *     0 - Only Self AWB generated.
-   *     1 - ALL
-   * @param string $language
-   *   Language of response ro|en (Optional).
+   * Finalize docket.
    *
    * @return array
    *
    * @throws Exception
    *   Error exeption recived from API.
    */
-  public function getBorderou($date, $mode = NULL, $language = NULL) {
+  public function finalizare() {
 
     $post = array(
       'username' => $this->user->name,
@@ -78,17 +70,11 @@ class exportBorderou implements endpointInterface {
       'user_pass' => $this->user->pass,
     );
 
-    if ($date) {$post['data'] = $date;}
-    if ($mode) {$post['mode'] = $mode;}
-    if ($language) {$post['language'] = $language;}
-
     $curl = new Curl($this->url);
     $rp = $curl->curlRequest($post);
 
     if ($rp['info']['http_code'] == 200) {
-      $response = str_getcsv($rp['response'], "\n");
-      unset($response[0]);
-      return $response;
+      return $rp['response'];
     }
     else {
       throw new Exception($rp['response']);
