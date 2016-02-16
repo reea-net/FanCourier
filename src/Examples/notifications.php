@@ -11,14 +11,17 @@ use FanCourier\fanCourier;
 
 try {
 
-  $user = new stdClass();
-  $user->name = 'clienttest';
-  $user->pass = 'testare';
-  $user->id = '7032158';
+  $params = [
+    'username' => 'clienttest',
+    'user_pass' => 'testare',
+    'client_id' => '7032158',
+  ];
 
   $fc = new fanCourier();
-  $endpoint = $fc->getEndpoint('Observatii', [$user]);
-  $result = $endpoint->getNotifications();
+  $endpoint = $fc->getEndpoint('Observatii');
+  $endpoint->setParams($params);
+  $endpoint->noHeader();
+  $result = $endpoint->getResult();
 
   foreach ($result as $key => $value) {
     echo $value . "<br/>\r\n";

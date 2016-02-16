@@ -15,7 +15,7 @@ use CURLFile;
  *
  * @author csaba.balint@reea.net
  */
-abstract class csvGenerator {
+trait csvGenerator {
 
   use csvMapping;
 

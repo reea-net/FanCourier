@@ -31,12 +31,12 @@ abstract class endpointManager implements endpointManagerInterface {
    * @throws Exception
    *   No endpoint exeption.
    */
-  public function getEndpoint($endpoint, array $params = []) {
+  public function getEndpoint($endpoint) {
     if (class_exists("FanCourier\\Endpoint\\" . $endpoint)) {
-      return call_user_func_array('FanCourier\\Endpoint\\' . $endpoint . '::setUp', $params);
+      return call_user_func('FanCourier\\Endpoint\\' . $endpoint . '::newEndpoint');
     }
     else {
-      throw new Exception('The requested endpoint does not exist.');
+      throw new Exception("Unrecognized endpoint: `$endpoint`.", 400);
     }
   }
 

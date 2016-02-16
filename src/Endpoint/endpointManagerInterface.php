@@ -13,5 +13,6 @@ namespace FanCourier\Endpoint;
  * @author csaba.balint@reea.net
  */
 interface endpointManagerInterface {
-  public function getEndpoint($endpoint, array $params = []);
+
+  public function getEndpoint($endpoint);
 }

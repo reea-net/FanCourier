@@ -7,15 +7,16 @@
 
 namespace FanCourier\Endpoint;
 
-use FanCourier\Endpoint\endpointInterface;
-use FanCourier\Plugin\Curl;
+use FanCourier\Endpoint\Endpoint;
 
 /**
  * Controller for FanCourier docket export.
  *
  * @author csaba.balint@reea.net
  */
-class exportBorderou implements endpointInterface {
+class exportBorderou extends Endpoint {
+
+  use \FanCourier\Plugin\csv\csvResult;
 
   /**
    * Endpoint url.
@@ -25,74 +26,10 @@ class exportBorderou implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/export_borderou_integrat.php';
 
   /**
-   * FanCourier user.
-   *
-   * @var object 
+   * Construct setups.
    */
-  protected $user;
-
-  /**
-   * New controller class.
-   * 
-   * @param type $user
-   *   Login in credentials.
-   *
-   * @return \FanCourier\Endpoint\exportBorderou
-   */
-  public static function setUp($user) {
-    return new exportBorderou($user);
-  }
-
-  /**
-   * Constructor.
-   *
-   * @param object $user
-   *   Login in credentials.
-   */
-  public function __construct($user) {
-    $this->user = $user;
-  }
-
-  /**
-   * Get borderou by date.
-   *
-   * @param string $date
-   *   Date for borderou.
-   * @param string $mode
-   *   Filter the returned value by: (Optional).
-   *     0 - Only Self AWB generated.
-   *     1 - ALL
-   * @param string $language
-   *   Language of response ro|en (Optional).
-   *
-   * @return array
-   *
-   * @throws Exception
-   *   Error exeption recived from API.
-   */
-  public function getBorderou($date, $mode = NULL, $language = NULL) {
-
-    $post = array(
-      'username' => $this->user->name,
-      'client_id' => $this->user->id,
-      'user_pass' => $this->user->pass,
-    );
-
-    if ($date) {$post['data'] = $date;}
-    if ($mode) {$post['mode'] = $mode;}
-    if ($language) {$post['language'] = $language;}
-
-    $curl = new Curl($this->url);
-    $rp = $curl->curlRequest($post);
-
-    if ($rp['info']['http_code'] == 200) {
-      $response = str_getcsv($rp['response'], "\n");
-      unset($response[0]);
-      return $response;
-    }
-    else {
-      throw new Exception($rp['response']);
-    }
+  public function __construct() {
+    $this->setRequirements(['data']);
   }
 
 }

@@ -11,16 +11,19 @@ use FanCourier\fanCourier;
 
 try {
 
-  $user = new stdClass();
-  $user->name = 'clienttest';
-  $user->pass = 'testare';
-  $user->id = '7032158';
+  $params = [
+    'username' => 'clienttest',
+    'user_pass' => 'testare',
+    'client_id' => '7032158',
+    'AWB' => 2046600120094,
+    'language' => 'ro', // Optional
+  ];
 
   $fc = new fanCourier();
-  $endpoint = $fc->getEndpoint('scanAwb', [$user]);
-
-  $result = $endpoint->scan(2039600120012);
-  print_r($result);
+  $endpoint = $fc->getEndpoint('scanAwb');
+  $endpoint->setParams($params);
+  $endpoint->noHeader();
+  print_r($endpoint->getResult());
 }
 catch (Exception $exc) {
   echo $exc->getMessage();

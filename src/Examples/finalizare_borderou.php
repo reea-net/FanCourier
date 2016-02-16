@@ -11,17 +11,16 @@ use FanCourier\fanCourier;
 
 try {
 
-  $user = new stdClass();
-  $user->name = 'clienttest';
-  $user->pass = 'testare';
-  $user->id = '7032158';
+  $params = [
+    'username' => 'clienttest',
+    'user_pass' => 'testare',
+    'client_id' => '7032158',
+  ];
 
   $fc = new fanCourier();
-  $endpoint = $fc->getEndpoint('finalizareBorderou', [$user]);
-
-  $result = $endpoint->finalizare();
-  print_r($result);
-
+  $endpoint = $fc->getEndpoint('finalizareBorderou');
+  $endpoint->setParams($params);
+  print_r($endpoint->getResult());
 }
 catch (Exception $exc) {
   echo $exc->getMessage();

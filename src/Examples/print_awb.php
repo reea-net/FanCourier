@@ -11,22 +11,30 @@ use FanCourier\fanCourier;
 
 try {
 
-  $user = new stdClass();
-  $user->name = 'clienttest';
-  $user->pass = 'testare';
-  $user->id = '7032158';
+  $params = [
+    'username' => 'clienttest',
+    'user_pass' => 'testare',
+    'client_id' => '7032158',
+    'nr' => '2046600120090',
+  ];
 
   $fc = new fanCourier();
-  $endpoint = $fc->getEndpoint('printAwb', [$user]);
+  $endpoint = $fc->getEndpoint('printAwb');
 
-  //HTML 
-  $result = $endpoint->getHtml(2039600120027);
-  print_r($result);
+  //HTML
+  $params['type'] = NULL; // Optional 2 for A6
+  $endpoint->setParams($params);
+  print_r($endpoint->getResult());
 
-  //PDF
-//  $result = $endpoint->getPdf(2039600120028, 'A5');
+  //OR PDF
+//  $endpoint->setType('pdf');
+//  $params['page'] = 'A5'; // Optional -> Pdf page type: A4,A5,A6
+//  $params['type'] = '0'; // Optional -> 0 or 1, if page A6 type=1
+//  $params['label'] = '1'; // Optional
+//  $endpoint->setParams($params);
 //  header('Content-type: application/pdf');
-//  print_r($result);
+//  //Do not print alongside HTML result (will fail to load PDF) 
+//  print_r($endpoint->getResult());
 }
 catch (Exception $exc) {
   echo $exc->getMessage();

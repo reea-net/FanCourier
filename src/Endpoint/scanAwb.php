@@ -7,15 +7,14 @@
 
 namespace FanCourier\Endpoint;
 
-use FanCourier\Endpoint\endpointInterface;
-use FanCourier\Plugin\Curl;
+use FanCourier\Endpoint\Endpoint;
 
 /**
  * Controller for FanCourier scan AWB.
  *
  * @author csaba.balint@reea.net
  */
-class scanAwb implements endpointInterface {
+class scanAwb extends Endpoint {
 
   /**
    * Endpoint url.
@@ -25,32 +24,10 @@ class scanAwb implements endpointInterface {
   protected $url = 'https://www.selfawb.ro/download_awb_scan_integrat.php';
 
   /**
-   * FanCourier user.
-   *
-   * @var object 
+   * Construct setups.
    */
-  protected $user;
-
-  /**
-   * New controller class.
-   * 
-   * @param type $user
-   *   Login in credentials.
-   *
-   * @return \FanCourier\Endpoint\scanAwb
-   */
-  public static function setUp($user) {
-    return new scanAwb($user);
-  }
-
-  /**
-   * Constructor.
-   *
-   * @param object $user
-   *   Login in credentials.
-   */
-  public function __construct($user) {
-    $this->user = $user;
+  public function __construct() {
+    $this->setRequirements(['AWB']);
   }
 
   /**

@@ -14,5 +14,11 @@ namespace FanCourier\Endpoint;
  */
 interface endpointInterface {
 
-  public static function setUp($user);
+  public static function newEndpoint();
+
+  public function getResult();
+
+  public function setParams(array $post_params);
+
+  public function checkErrors();
 }
