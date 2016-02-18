@@ -1,46 +1,84 @@
 <?php
 
-/*
- * AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.
+/**
+ * @file
+ * Contains \FanCourier\Plugin\csv\csvItem.
  */
 
-namespace FanCurier\Plugin\csv;
+namespace FanCourier\Plugin\csv;
 
 /**
- * Description of csvItem
+ * Class to create new csv line.
  *
  * @author csaba.balint@reea.net
  */
 class csvItem {
 
+  use csvMapping;
+
+  /**
+   * Array containing the csv item.
+   *
+   * @var array 
+   */
   private $item;
 
-  public function __construct($length = 34) {
-    $this->item = range(0, $length);
+  /**
+   * Creat a blank csv item.
+   */
+  public function __construct() {
+    $this->item = array_fill(0, count($this->getMachinNames()) - 1, '');
   }
 
-  public static function newItem($length = 34) {
-    return new csvItem($length);
+  /**
+   * New item.
+   *
+   * @return \FanCourier\Plugin\csv\csvItem
+   */
+  public static function newItem() {
+    return new csvItem();
   }
 
-  public function setAddress(array $address) {
-    isset($address['judet']) ? $this->item[18] = $address['judet'] : NULL;
-    isset($address['localitate']) ? $this->item[19] = $address['localitate'] : NULL;
-    isset($address['strada']) ? $this->item[20] = $address['strada'] : NULL;
-  }
-
+  /**
+   * Update column by ID.
+   *
+   * @param type $key
+   *   CSV column id.
+   *   @see \FanCourier\Plugin\csv\csvMapping::getMachinNames()
+   * @param type $value
+   *   Value of the 
+   */
   public function setItem($key, $value) {
-    $this->item[$key] = $value;
+    $this->setItems([$key => $value]);
   }
 
-  public function getItem() {
-    
-    foreach ($this->item as $key => $value) {
-      if(is_numeric($value)) {
-        $this->item[$key] = '';
-      }
+  /**
+   * Update multiple columns by ID.
+   *
+   * @staticvar type $map
+   *   Machine names of the csv columns.
+   *
+   * @param array $items
+   *   Array of columns values.
+   */
+  public function setItems(array $items) {
+    static $map;
+
+    if (!$map) {
+      $map = $this->getMachinNames();
     }
-    
+    foreach ($items as $key => $value) {
+      $this->item[$map[$key]] = $value;
+    }
+  }
+
+  /**
+   * Return the saved csv line.
+   * 
+   * @return array
+   *   CSV line.
+   */
+  public function getItem() {
     return $this->item;
   }
 

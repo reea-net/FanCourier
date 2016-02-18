@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \FanCourier\Endpoint\awbGenerator.
+ * Contains \FanCourier\Endpoint\exportTransfers.
  */
 
 namespace FanCourier\Endpoint;
@@ -10,13 +10,12 @@ namespace FanCourier\Endpoint;
 use FanCourier\Endpoint\Endpoint;
 
 /**
- * Controller for FanCourier new AWB number/s.
+ * Controller for FanCourier transfers export.
  *
  * @author csaba.balint@reea.net
  */
-class awbGenerator extends Endpoint {
+class exportTransfers extends Endpoint {
 
-  use \FanCourier\Plugin\csv\csvGenerator;
   use \FanCourier\Plugin\csv\csvResult;
 
   /**
@@ -24,13 +23,13 @@ class awbGenerator extends Endpoint {
    *
    * @var string 
    */
-  protected $url = 'https://www.selfawb.ro/import_awb_integrat.php';
+  protected $url = 'https://www.selfawb.ro/export_raport_viramente_integrat.php';
 
   /**
    * Construct setups.
    */
   public function __construct() {
-    $this->setRequirements(['fisier']);
+    $this->setRequirements(['data']);
   }
 
 }

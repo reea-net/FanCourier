@@ -1,18 +1,18 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file
+ * Contains \FanCourier\Endpoint\endpointManagerInterface.
  */
 
-namespace FanCurier\Endpoint;
+namespace FanCourier\Endpoint;
 
 /**
- * Description of endpointManagerInterface
+ * Interface for endpointManager abstract class.
  *
- * @author balintcsaba89@gmail.com
+ * @author csaba.balint@reea.net
  */
 interface endpointManagerInterface {
-  //put your code here
+
+  public function getEndpoint($endpoint);
 }

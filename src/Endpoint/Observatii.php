@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \FanCourier\Endpoint\Servicii.
+ * Contains \FanCourier\Endpoint\Observatii.
  */
 
 namespace FanCourier\Endpoint;
@@ -10,11 +10,11 @@ namespace FanCourier\Endpoint;
 use FanCourier\Endpoint\Endpoint;
 
 /**
- * Controller for FanCourier services.
+ * Controller for FanCourier notifications.
  *
  * @author csaba.balint@reea.net
  */
-class Servicii extends Endpoint {
+class Observatii extends Endpoint {
 
   use \FanCourier\Plugin\csv\csvResult;
 
@@ -23,6 +23,6 @@ class Servicii extends Endpoint {
    *
    * @var string 
    */
-  protected $url = 'https://www.selfawb.ro/export_servicii_integrat.php';
+  protected $url = 'https://www.selfawb.ro/export_observatii_integrat.php';
 
 }

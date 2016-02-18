@@ -1,22 +1,45 @@
 <?php
 
-namespace FanCurier\Plugin;
+/**
+ * @file
+ * Contains \FanCourier\Plugin\Curl.
+ */
 
-use Exception;
+namespace FanCourier\Plugin;
 
 /**
- * Description of fanCurier
+ * Curl request handler class.
  *
  * @author csaba.balint@reea.net
  */
 class Curl {
 
+  /**
+   * URL for CURL request.
+   *
+   * @var string 
+   */
   private $url;
 
+  /**
+   * Constructor function.
+   *
+   * @param string $url
+   *   URL of the request.
+   */
   public function __construct($url) {
     $this->url = $url;
   }
 
+  /**
+   * Making a CURL request.
+   *
+   * @param type $post
+   *   Array of CURL request params.
+   *
+   * @return array
+   *   Response of request.
+   */
   public function curlRequest($post) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $this->url);

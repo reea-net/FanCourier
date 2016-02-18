@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \FanCourier\Endpoint\Servicii.
+ * Contains \FanCourier\Endpoint\awbErrors.
  */
 
 namespace FanCourier\Endpoint;
@@ -10,11 +10,11 @@ namespace FanCourier\Endpoint;
 use FanCourier\Endpoint\Endpoint;
 
 /**
- * Controller for FanCourier services.
+ * Controller for FanCourier AWB errors.
  *
  * @author csaba.balint@reea.net
  */
-class Servicii extends Endpoint {
+class awbErrors extends Endpoint {
 
   use \FanCourier\Plugin\csv\csvResult;
 
@@ -23,6 +23,6 @@ class Servicii extends Endpoint {
    *
    * @var string 
    */
-  protected $url = 'https://www.selfawb.ro/export_servicii_integrat.php';
+  protected $url = 'https://www.selfawb.ro/export_lista_erori_imp_awb_integrat.php';
 
 }

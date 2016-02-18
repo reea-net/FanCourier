@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Exemple of getting the services.
+ * Exemple of deleting AWB.
  */
 
 include_once __DIR__ . '/../../vendor/autoload.php';
@@ -15,12 +15,12 @@ try {
     'username' => 'clienttest',
     'user_pass' => 'testare',
     'client_id' => '7032158',
+    'AWB' => '2046600120096',
   ];
 
   $fc = new fanCourier();
-  $endpoint = $fc->getEndpoint('Servicii');
+  $endpoint = $fc->getEndpoint('deleteAwb');
   $endpoint->setParams($params);
-  $endpoint->noHeader();
   print_r($endpoint->getResult());
 }
 catch (Exception $exc) {

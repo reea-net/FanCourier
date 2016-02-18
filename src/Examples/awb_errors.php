@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Exemple of getting the services.
+ * Exemple to get AWB errors.
  */
 
 include_once __DIR__ . '/../../vendor/autoload.php';
@@ -18,10 +18,14 @@ try {
   ];
 
   $fc = new fanCourier();
-  $endpoint = $fc->getEndpoint('Servicii');
+  $endpoint = $fc->getEndpoint('awbErrors');
   $endpoint->setParams($params);
   $endpoint->noHeader();
-  print_r($endpoint->getResult());
+  $result = $endpoint->getResult();
+
+  foreach ($result as $key => $value) {
+    print_r(str_getcsv($value));
+  }
 }
 catch (Exception $exc) {
   echo $exc->getMessage();

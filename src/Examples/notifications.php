@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Exemple of getting the services.
+ * Exemple of getting the notifications.
  */
 
 include_once __DIR__ . '/../../vendor/autoload.php';
@@ -18,10 +18,14 @@ try {
   ];
 
   $fc = new fanCourier();
-  $endpoint = $fc->getEndpoint('Servicii');
+  $endpoint = $fc->getEndpoint('Observatii');
   $endpoint->setParams($params);
   $endpoint->noHeader();
-  print_r($endpoint->getResult());
+  $result = $endpoint->getResult();
+
+  foreach ($result as $key => $value) {
+    echo $value . "<br/>\r\n";
+  }
 }
 catch (Exception $exc) {
   echo $exc->getMessage();
