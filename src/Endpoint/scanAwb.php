@@ -30,41 +30,4 @@ class scanAwb extends Endpoint {
     $this->setRequirements(['AWB']);
   }
 
-  /**
-   * Scan awb number.
-   *
-   * @param int $awb
-   *   AWB number.
-   * @param string $language
-   *   Language of response ro|en (Optional).
-   *
-   * @return array
-   *
-   * @throws Exception
-   *   Error exeption recived from API.
-   */
-  public function scan($awb, $language = NULL) {
-
-    $post = array(
-      'username' => $this->user->name,
-      'client_id' => $this->user->id,
-      'user_pass' => $this->user->pass,
-      'AWB' => $awb,
-    );
-
-    if ($language) {
-      $post['language'] = $language;
-    }
-
-    $curl = new Curl($this->url);
-    $rp = $curl->curlRequest($post);
-
-    if ($rp['info']['http_code'] == 200) {
-      return $rp['response'];
-    }
-    else {
-      throw new Exception($rp['response']);
-    }
-  }
-
 }

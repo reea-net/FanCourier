@@ -8,7 +8,7 @@
 namespace FanCourier\Endpoint;
 
 use FanCourier\Endpoint\Endpoint;
-use Exception;
+use FanCourier\Plugin\Exeption\fcApiExeption;
 
 /**
  * Controller for FanCourier Price calculation. 
@@ -78,7 +78,7 @@ class Price extends Endpoint {
    * Set type of price calculation.
    *
    * @param string $type
-   * @throws Exception
+   * @throws fcApiExeption
    */
   public function setType($type) {
     if ($type == 'internal' || $type == 'export') {
@@ -92,7 +92,7 @@ class Price extends Endpoint {
       }
     }
     else {
-      throw new Exception('Invalid type. Accepted values "internal" or "export"', 400);
+      throw new fcApiExeption('Invalid type. Accepted values "internal" or "export"', 400);
     }
   }
 

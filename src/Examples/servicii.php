@@ -4,7 +4,6 @@
  * @file
  * Exemple of getting the services.
  */
-
 include_once __DIR__ . '/../../vendor/autoload.php';
 
 use FanCourier\fanCourier;

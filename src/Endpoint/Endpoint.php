@@ -9,6 +9,7 @@ namespace FanCourier\Endpoint;
 
 use FanCourier\Endpoint\endpointInterface;
 use FanCourier\Plugin\Curl;
+use FanCourier\Plugin\Exeption\fcApiExeption;
 
 /**
  * Endpoint controller class.
@@ -55,7 +56,7 @@ abstract class Endpoint implements endpointInterface {
   /**
    * Make CURL call.
    *
-   * @throws Exception
+   * @throws fcApiExeption
    */
   public function curlCall() {
 
@@ -68,7 +69,7 @@ abstract class Endpoint implements endpointInterface {
       $this->result = $rp['response'];
     }
     else {
-      throw new Exception($rp['response']);
+      throw new fcApiExeption($rp['response'], $rp['info']['http_code']);
     }
   }
 

@@ -7,7 +7,7 @@
 
 namespace FanCourier\Endpoint;
 
-use Exception;
+use FanCourier\Plugin\Exeption\fcApiExeption;
 
 /**
  * Check for endpoint errors.
@@ -43,7 +43,7 @@ trait paramError {
   /**
    * Check for errors.
    *
-   * @throws Exception
+   * @throws fcApiExeption
    */
   public function checkErrors() {
     $errors = NULL;
@@ -59,7 +59,7 @@ trait paramError {
         }
       }
       if ($errors) {
-        throw new Exception($errors, 400);
+        throw new fcApiExeption($errors, 400);
       }
     }
   }

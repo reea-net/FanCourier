@@ -8,7 +8,7 @@
 namespace FanCourier\Endpoint;
 
 use FanCourier\Endpoint\endpointManagerInterface;
-use Exception;
+use FanCourier\Plugin\Exeption\fcApiExeption;
 
 /**
  * endpointManager abstract class.
@@ -28,7 +28,7 @@ abstract class endpointManager implements endpointManagerInterface {
    * @return object
    *    Endpoint conroller.
    *
-   * @throws Exception
+   * @throws fcApiExeption
    *   No endpoint exeption.
    */
   public function getEndpoint($endpoint) {
@@ -36,7 +36,7 @@ abstract class endpointManager implements endpointManagerInterface {
       return call_user_func('FanCourier\\Endpoint\\' . $endpoint . '::newEndpoint');
     }
     else {
-      throw new Exception("Unrecognized endpoint: `$endpoint`.", 400);
+      throw new fcApiExeption("Unrecognized endpoint: `$endpoint`.", 400);
     }
   }
 
