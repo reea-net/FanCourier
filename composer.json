@@ -1,6 +1,6 @@
 {
   "name": "curier/fancourier",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "library",
   "license": "GPL",
   "description": "API for FanCourier express courier services.",
