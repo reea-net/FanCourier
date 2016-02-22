@@ -54,7 +54,7 @@ trait paramError {
     }
     if ($this->post_requirements) {
       foreach ($this->post_requirements as $requirement) {
-        if (!isset($this->post_params[$requirement]) || !$this->post_params[$requirement]) {
+        if (!isset($this->post_params[$requirement]) || is_null($this->post_params[$requirement])) {
           $errors .= "Param `$requirement` is missing or empty.<br/>\r\n";
         }
       }
