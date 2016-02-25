@@ -67,8 +67,11 @@ class csvItem {
     if (!$map) {
       $map = $this->getMachinNames();
     }
+
     foreach ($items as $key => $value) {
-      $this->item[$map[$key]] = $value;
+      if (isset($map[$key])) {
+        $this->item[$map[$key]] = strtr($value, ',', '|');
+      }
     }
   }
 
